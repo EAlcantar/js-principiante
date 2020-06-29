@@ -1,3 +1,6 @@
+
+//LOOPS
+
 var cars = ["Seat", "Chevrolet", "Ferrari", "Fiat"];
 //For-loop clásico de cualquier lenguaje.
 for (let x = 0; x < cars.length; x++) {
@@ -85,4 +88,3 @@ promesa.then( (res)=>{
 }).catch((err)=>{
     console.log(err);
 });
-
