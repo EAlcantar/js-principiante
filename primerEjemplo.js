@@ -73,18 +73,88 @@ console.log("---------- PROMESAS -----------------");
  
 //Se usa para hacer fetch a URL's por ejemplo. Con la promesa se valida la 
 //información (los JSON's) retornados por la URL 
-var cumplirPromesa = false;
+// var cumplirPromesa = false;
 
-let promesa = new Promise((si, no) => {
-    if(cumplirPromesa){
-        si("Si se cumplió la promesa");
-    }else{
-        no("No se cumplió la promesa");
-    }
+// let promesa = new Promise((si, no) => {
+//     if(cumplirPromesa){
+//         si("Si se cumplió la promesa");
+//     }else{
+//         no("No se cumplió la promesa");
+//     }
+// });
+// //Ejecutando la promesa
+// promesa.then( (res)=>{
+//     console.log(res);
+// }).catch((err)=>{
+//     console.log(err);
+// });
+
+
+// // Otro ejemplo de promesa
+// const miPromesa = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         console.log("Hola desde promesa");
+//         resolve();  
+//     }, 2000);
+// });
+
+// miPromesa
+// .then(() => {
+//     console.log("Promesa resuelta");
+// })
+// .catch(() => {
+//     console.log("Promesa rechazada");
+// })
+// .finally(() => {
+//     console.log("Promesa realizada");
+// });
+
+const promesa1 = new Promise ((resolve,reject) => {
+    setTimeout(() => {
+        console.log("1. Hola");
+        resolve();
+    }, 1000);
 });
-//Ejecutando la promesa
-promesa.then( (res)=>{
-    console.log(res);
-}).catch((err)=>{
-    console.log(err);
-});
+
+promesa1
+.then(() => {
+    return new Promise((resolve,reject) => {
+        setTimeout(() => {
+            console.log("2. Soy");
+            resolve();
+        }, 1000);
+    });
+})
+.then(() => {
+   return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("3. Erick");
+            reject();
+        }, 1000);
+    });
+  })
+ .catch(() => {
+     console.log("Promesa rechazada antes");
+ })
+ .then(() => {
+     return new Promise((resolve, reject) => {
+         setTimeout(() => {
+             console.log("4. Alcantar");
+             resolve();
+         }, 1000);
+     });
+ })
+ .then(() => {
+     return new Promise((resolve, reject) => {
+         setTimeout(() => {
+             console.log("5. Mares");
+             resolve();
+         }, 1000);
+     });
+ })
+ .catch(() => {
+     console.log("Promesa rechazada");
+ })
+ .finally(() => {
+     console.log("Promeza finalizada");
+ });
