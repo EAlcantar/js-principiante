@@ -1,3 +1,6 @@
+
+//Imprime la sucesión de Fibonacci n veces
+
 function fibo(number) {
     var a = 0, b = 1, c, s = 1;
 
